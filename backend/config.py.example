@@ -1,0 +1,27 @@
+#请修改配置文件名称为config.py
+
+# 选择注册方式: "captcha" 或 "email"
+REGISTRATION_METHOD = "email" 
+
+# SMTP邮箱配置（仅当 REGISTRATION_METHOD = "email" 时需要）
+SMTP_SERVER = "smtp.qq.com" #目前仅测试过qq邮箱
+SMTP_PORT = 465
+SMTP_EMAIL = "example@qq.com"
+SMTP_NICKNAME = "PlanetZero"
+SMTP_PASSWORD = "YOURPASSWORD"
+EMAIL_SUBJECT = "验证码验证服务"
+EMAIL_CONTENT = "您的验证码是%s，有效期为10分钟"
+
+
+# Redis 配置
+REDIS_HOST = 'localhost'  # Redis服务器地址
+REDIS_PORT = 6379         # Redis服务器端口
+REDIS_DB = 0              # Redis数据库索引
+REDIS_PASSWORD = "YOURPASSWORD"     # Redis密码（如果没有设置，请保留为None）
+
+# 图形验证码字符集
+CHAR_SET = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+            'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+            'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
