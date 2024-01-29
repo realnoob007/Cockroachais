@@ -86,7 +86,7 @@ def register():
         # 验证电子邮件格式
         try:
             valid = validate_email(email)
-            email = valid.email  # 格式化的电子邮件
+            email = valid.email  # 格式化邮件
         except EmailNotValidError as e:
             return jsonify({'message': 'Invalid email format'}), 400
         
@@ -109,7 +109,7 @@ def register():
             logging.info(f"Captcha for {username} validated successfully.")
             
         elif config.REGISTRATION_METHOD == "email":
-            email_code = r.get(email)  # Retrieve the code using the email as the key
+            email_code = r.get(email) 
             if not email_code:
                 logging.info(f"Email code for {email} not found or expired.")
                 return jsonify({'message': 'Email code expired or not found'}), 400
@@ -128,7 +128,7 @@ def register():
             return jsonify({'message': 'User registered successfully'}), 201
 
 
-        # Create and save new user
+        # 创建并保存新用户
         new_user = User(username=username, email=email)
         new_user.set_password(password)
         db.session.add(new_user)
@@ -146,9 +146,6 @@ def gen_captcha_text_and_image():
     captcha_text = ''.join(captcha_text)
     captcha = image.generate(captcha_text)
     captcha_image = Image.open(captcha)
-
-    # 确保不要将 captcha_image 转换为 NumPy 数组
-    # 如果您在这里有类似于 `captcha_image = np.array(captcha_image)` 的代码，请移除它
 
     return captcha_text, captcha_image
 
